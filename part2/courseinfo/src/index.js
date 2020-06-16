@@ -2,11 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const Course = ({course}) => {
-  const total = course.parts.reduce((sum, part) =>  sum + part.exercises,0)
-    
+  const total = course.parts.reduce((sum, part) =>
+    sum + part.exercises, 0
+    )
+  
   return(
         <div>
-            <h1>{course.name}</h1>
+            <h3>{course.name}</h3>
                 {course.parts.map(part => 
                     <p key={part.id}>
                       {part.name} {part.exercises}
@@ -19,9 +21,11 @@ const Course = ({course}) => {
 }
 
 const App = () => {
-    const course = {
-      id: 1,
+
+const courses = [
+    {
       name: 'Half Stack application development',
+      id: 1,
       parts: [
         {
           name: 'Fundamentals of React',
@@ -39,16 +43,37 @@ const App = () => {
           id: 3
         },
         {
-            name: 'Redux',
-            exercises: 11,
-            id: 5
+          name: 'Redux',
+          exercises: 11,
+          id: 4
         }
-
+      ]
+    }, 
+    {
+      name: 'Node.js',
+      id: 2,
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: 'Middlewares',
+          exercises: 7,
+          id: 2
+        }
       ]
     }
+  ]
   
-    return <Course course={course} />
-  }
+    return (
+    <div>
+      <h1>Web development curriculum</h1>
+      {courses.map(course => <Course key={course.id} course={course} /> )}
+    </div>
+    )
+}
 
 ReactDOM.render(
   <App />,
