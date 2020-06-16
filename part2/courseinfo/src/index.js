@@ -2,15 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const Course = ({course}) => {
+    let sum = 0
     return(
         <div>
             <h1>{course.name}</h1>
-                {course.parts.map(part => 
-                    <p key={part.id}>
-                      {part.name} {part.exercises}
-                    </p>
+                {course.parts.map(part => {
+                    sum += part.exercises
+                    return (
+                    <p key={part.id}>{part.name} {part.exercises}</p>
+                )}
                 )
                 }
+            <h3>total of {sum} exercises</h3>
         </div>
     )
 }
