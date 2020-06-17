@@ -1,24 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-const Course = ({course}) => {
-  const total = course.parts.reduce((sum, part) =>
-    sum + part.exercises, 0
-    )
-  
-  return(
-        <div>
-            <h3>{course.name}</h3>
-                {course.parts.map(part => 
-                    <p key={part.id}>
-                      {part.name} {part.exercises}
-                    </p>
-                )
-                }
-            <h4>total number of {total} exercises</h4>
-        </div>
-    )
-}
+import Course from './components/Course'
 
 const App = () => {
 
@@ -48,7 +30,7 @@ const courses = [
           id: 4
         }
       ]
-    }, 
+    },
     {
       name: 'Node.js',
       id: 2,
